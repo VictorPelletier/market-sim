@@ -9,7 +9,7 @@ export interface Agent {
   /**
    * Called each simulation tick. Returns an order to submit, or null to pass.
    */
-  act(marketState: MarketState): Order | null;
+  act(marketState: MarketState): Promise<Order | Order[] | null>
 
   /**
    * Called after a trade involving this agent is executed.
@@ -30,7 +30,7 @@ export abstract class BaseAgent implements Agent {
     this.holdings = {};
   }
 
-  abstract act(marketState: MarketState): Order | null;
+  abstract act(marketState: MarketState): Promise<Order | Order[] | null>
 
   onTrade(price: number, quantity: number, side: "buy" | "sell"): void {
     if (side === "buy") {

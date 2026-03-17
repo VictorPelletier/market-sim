@@ -32,6 +32,7 @@ export interface MarketState {
   bestBid: number | null;
   bestAsk: number | null;
   lastPrice: number | null;
+  priceHistory:number[];
   volume: number;
   timestamp: number;
 }

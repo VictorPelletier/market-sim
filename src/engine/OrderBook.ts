@@ -135,6 +135,7 @@ export class OrderBook {
       symbol: this.symbol,
       bestBid: this.bids[0]?.price ?? null,
       bestAsk: this.asks[0]?.price ?? null,
+      priceHistory: this.trades.slice(-200).map(t => t.price),
       lastPrice: this.lastPrice,
       volume: this.volume,
       timestamp: Date.now(),
